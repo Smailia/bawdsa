@@ -1,0 +1,50 @@
+<section class="pokemon-list-page">
+
+  <!-- Header con back button -->
+  <header class="page-header">
+    <a routerLink="/" class="back-btn">← Tipi</a>
+    <h1 class="page-title">
+      Tipo <span class="type-badge">{{ typeName | titlecase }}</span>
+    </h1>
+    <p *ngIf="!isLoading && !hasError" class="page-subtitle">
+      {{ pokemons.length }} Pokémon trovati
+    </p>
+  </header>
+
+  <!-- Loading state -->
+  <div *ngIf="isLoading" class="state-container">
+    <div class="spinner"></div>
+    <p>Caricamento in corso…</p>
+  </div>
+
+  <!-- Error state -->
+  <div *ngIf="hasError" class="state-container error">
+    <span class="state-icon">⚠️</span>
+    <p>Errore nel caricamento. Riprova più tardi.</p>
+    <a routerLink="/" class="btn-primary">Torna alla home</a>
+  </div>
+
+  <!-- Pokemon grid -->
+  <div *ngIf="!isLoading && !hasError" class="pokemon-grid">
+    <a
+      *ngFor="let entry of pokemons"
+      [routerLink]="['/pokemon', entry.pokemon.name]"
+      class="pokemon-card"
+    >
+      <div class="pokemon-sprite-wrap">
+        <img
+          [src]="getSpriteUrl(getPokemonId(entry.pokemon.url))"
+          [alt]="entry.pokemon.name"
+          class="pokemon-sprite"
+          loading="lazy"
+          (error)="$any($event.target).style.display='none'"
+        />
+      </div>
+      <div class="pokemon-info">
+        <span class="pokemon-id">#{{ getPokemonId(entry.pokemon.url).toString().padStart(3, '0') }}</span>
+        <span class="pokemon-name">{{ capitalize(entry.pokemon.name) }}</span>
+      </div>
+    </a>
+  </div>
+
+</section>

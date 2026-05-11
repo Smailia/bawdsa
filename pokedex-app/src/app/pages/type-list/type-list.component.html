@@ -1,0 +1,19 @@
+<section class="type-list-page">
+  <header class="page-header">
+    <h1 class="page-title">Scegli un Tipo</h1>
+    <p class="page-subtitle">Seleziona una categoria per vedere i Pokémon appartenenti a quel tipo</p>
+  </header>
+
+  <div class="types-grid">
+    <a
+      *ngFor="let type of types"
+      [routerLink]="['/type', type.name]"
+      class="type-card"
+      [style.--type-color]="type.color"
+    >
+      <span class="type-emoji">{{ type.emoji }}</span>
+      <span class="type-label">{{ type.label }}</span>
+      <span class="type-arrow">→</span>
+    </a>
+  </div>
+</section>

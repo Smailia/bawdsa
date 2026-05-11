@@ -1,0 +1,83 @@
+/* ─── Global Tokens ─────────────────────────────────────────────────── */
+:root {
+  --clr-bg:        #0d0f14;
+  --clr-surface:   #161b24;
+  --clr-border:    #252d3d;
+  --clr-accent:    #f7c948;
+  --clr-accent2:   #e84393;
+  --clr-text:      #e8eaf0;
+  --clr-muted:     #6b7280;
+  --radius:        12px;
+  --font-display:  'Exo 2', sans-serif;
+  --font-body:     'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+}
+
+/* ─── Shell ──────────────────────────────────────────────────────────── */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ─── Header ─────────────────────────────────────────────────────────── */
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--clr-border);
+  background: rgba(22, 27, 36, 0.8);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  text-decoration: none;
+  color: var(--clr-accent);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: .03em;
+}
+
+.logo-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.breadcrumb {
+  display: flex;
+  gap: .5rem;
+  font-size: .85rem;
+  color: var(--clr-muted);
+
+  a {
+    color: var(--clr-muted);
+    text-decoration: none;
+    transition: color .2s;
+    &:hover { color: var(--clr-accent); }
+  }
+}
+
+/* ─── Main ───────────────────────────────────────────────────────────── */
+.app-main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
